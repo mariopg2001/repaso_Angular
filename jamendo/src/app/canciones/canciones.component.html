@@ -1,0 +1,57 @@
+<h1>Listado de canciones</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canciones</title>
+</head>
+<body>
+    <div class="col-2">
+        <button type="button" class="listbutton btn btn-secondary" (click)="traer_cancion()">Buscar Canciones</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <td>colum1</td>
+                <td>colum2</td>
+                <td>colum3</td>
+                <td>colum4</td>
+            </tr>
+        </thead>
+        <tbody *ngIf="observable">
+            <tr *ngFor="let cancion of observable.results">
+              <td><img src={{cancion.image}} width="100"></td>
+              <td>{{cancion.id}}</td>
+              <td>{{cancion.name}}</td>
+              <td>{{cancion.joindate}}</td>
+              <td>
+                <button (click)="sacar_canciones(cancion)" id="{{cancion.id}}">canciones</button>
+              </td>
+            </tr>
+      
+          </tbody>
+    </table>
+    <div *ngIf="observable2">
+        <table>
+          <thead>
+            <tr>
+                <td>colum1</td>
+                <td>colum2</td>
+                <td>colum3</td>
+                <td>colum4</td>
+            </tr>
+          </thead>
+          <tbody *ngIf="observable2">
+            <tr *ngFor="let letra of observable2.results[0].tracks">
+              <td><img src={{letra.image}} width="100"></td>
+              <td>{{letra.id}}</td>
+              <td>{{letra.duration}}</td>
+              <td>{{letra.album_id}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+</body>
+</html>
